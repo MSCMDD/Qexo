@@ -233,9 +233,13 @@ def friends(request):
         data = list()
         for i in all_friends:
             if i.status:
-                data.append({"name": i.name, "url": i.url, "image": i.imageUrl,
-                             "description": i.description,
-                             "time": i.time})
+                data.append({
+                    "name": i.name,
+                    "url": i.url,
+                    "image": i.imageUrl,
+                    "description": i.description,
+                    "time": i.time
+                })
         data.sort(key=lambda x: x["time"])
         context = {"data": data, "status": True}
     except Exception as e:
