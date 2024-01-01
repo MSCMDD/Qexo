@@ -236,8 +236,11 @@ def friends(request):
                 link_list.append({
                     "name": friend.name,
                     "url": friend.url,
+                    "link": friend.url,
                     "image": friend.imageUrl,
+                    "avatar": friend.imageUrl,
                     "description": friend.description,
+                    "descr": friend.description,
                     "time": friend.time
                 })
         link_list.sort(key=lambda x: x["time"])  # 将data.sort更名为link_list.sort
