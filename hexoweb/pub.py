@@ -230,22 +230,22 @@ def auto_fix(request):
 def friends(request):
     try:
         all_friends = FriendModel.objects.all()
-        link_list = list()
-        for i in all_friends:
-            if i.status:
+        link_list = []  # 将data更名为link_list
+        for friend in all_friends:
+            if friend.status:
                 link_list.append({
-                    "name": i.name,
-                    "link": i.url,
-                    "avatar": i.imageUrl,
-                    "descr": i.description,
-                    "time": i.time
+                    "name": friend.name,
+                    "url": friend.url,
+                    "image": friend.imageUrl,
+                    "description": friend.description,
+                    "time": friend.time
                 })
-        link_list.sort(key=lambda x: x["time"])
-        context = {"data": link_list, "status": True}
+        link_list.sort(key=lambda x: x["time"])  # 将data.sort更名为link_list.sort
+        context = {"data": link_list, "status": True}  # 将data更名为link_list
     except Exception as e:
         logging.error(repr(e))
         context = {"msg": repr(e), "status": False}
-    return JsonResponse(safe=False, data=context)
+    return JsonResponse(data=context)
 
 
 # 新增友链 pub/add_friend
