@@ -230,18 +230,18 @@ def auto_fix(request):
 def friends(request):
     try:
         all_friends = FriendModel.objects.all()
-        data = list()
+        link_list = list()
         for i in all_friends:
             if i.status:
-                data.append({
+                link_list.append({
                     "name": i.name,
                     "link": i.url,
                     "avatar": i.imageUrl,
                     "descr": i.description,
                     "time": i.time
                 })
-        data.sort(key=lambda x: x["time"])
-        context = {"data": data, "status": True}
+        link_list.sort(key=lambda x: x["time"])
+        context = {"data": link_list, "status": True}
     except Exception as e:
         logging.error(repr(e))
         context = {"msg": repr(e), "status": False}
