@@ -235,9 +235,9 @@ def friends(request):
             if i.status:
                 data.append({
                     "name": i.name,
-                    "url": i.url,
-                    "image": i.imageUrl,
-                    "description": i.description,
+                    "link": i.url,
+                    "avatar": i.imageUrl,
+                    "descr": i.description,
                     "time": i.time
                 })
         data.sort(key=lambda x: x["time"])
