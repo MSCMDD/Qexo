@@ -241,7 +241,7 @@ def friends(request):
                     "time": friend.time
                 })
         link_list.sort(key=lambda x: x["time"])  # 将data.sort更名为link_list.sort
-        context = {"data": link_list, "status": True}  # 将data更名为link_list
+        context = {"link_list": link_list, "status": True}  # 将data更名为link_list
     except Exception as e:
         logging.error(repr(e))
         context = {"msg": repr(e), "status": False}
